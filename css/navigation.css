@@ -1,0 +1,30 @@
+  .topnav {
+    overflow: hidden;
+    background-color: #1A3668;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    padding: 10px;
+  }
+  
+  .topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: #1A3668;
+  }
+
+
+  @media only screen and (max-width: 768px){
+    .topnav {
+      display: none;
+    }
+
+  }
+  

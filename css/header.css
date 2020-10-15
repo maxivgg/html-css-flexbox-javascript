@@ -1,0 +1,37 @@
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    text-align: center;
+    color: #1A3668;
+  }
+  
+  .header h1 {
+    font-size: 3rem;
+  }
+
+  #mobile-nav{
+    display: none;
+    font-size: 20px;
+    color: #fff;
+    padding: 0.2rem 0.4rem 0.15rem 0.4rem;
+;}
+
+
+@media only screen and (max-width: 768px){
+    .sub-menu {
+        display: none;
+    }
+    #mobile-nav{
+        display: inline-block;
+    }
+    .header h1{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .header{
+        padding: 20px;
+        border-bottom: 1px solid #e9ecef;
+    }
+
+  }
