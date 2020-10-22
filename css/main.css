@@ -3,17 +3,17 @@ body {
   /*background: #f1f1f1;*/
 }
 
-.row {
+#content {
   display: flex;
   justify-content: space-between;
 
 }
 
-.leftcolumn {
+#leftcolumn {
   flex-basis: 65%;
 }
 
-.rightcolumn {
+#rightcolumn {
   flex-basis: 35%;
 }
 

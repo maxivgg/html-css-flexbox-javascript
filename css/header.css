@@ -1,11 +1,11 @@
   /* Header/Blog Title */
-  .header {
+  #header {
     /*padding: 30px;*/
     text-align: center;
     color: #1A3668;
   }
   
-  .header h1 {
+  #header h1 {
     font-size: 3rem;
   }
 
@@ -17,19 +17,19 @@
 }
 
 
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 1140px){
     .sub-menu {
         display: none;
     }
     #mobile-nav{
         display: inline-block;
     }
-    .header h1{
+    #header h1{
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    .header{
+    #header{
         padding: 0px 20px 0px 20px;
         /*border-bottom: 1px solid #e9ecef;*/
     }
