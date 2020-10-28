@@ -40,6 +40,10 @@ body {
     border: 1px solid #ced4da;
     border-radius: .25rem;
 }
+.form-input-invalid{
+  border: 1px solid #dc3545;
+
+}
 .mb-2 {
   margin-bottom: 0.75rem;
 }
@@ -79,6 +83,7 @@ body {
   font-size: 80%;
   color: #dc3545;
 }
+
 
 .card {
   padding: 20px;

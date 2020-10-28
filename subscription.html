@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="./css/navigation.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
+		<link rel="stylesheet" href="./css/footer.css" />
+		
+		<script defer="defer" src="./js/validate-form.js"></script>
+
   </head>
 
   <body>
@@ -42,18 +45,19 @@
         <div class="card">
           <h2>Suscription</h2>
           <form>
-            <h5 id="welcome">Hi</h5>
+            <h3 id="welcome">Hi</h3>
             <div class="row mb-2">
               <div class="left-row mb-2">
                 <input
                   name="name"
                   id="name"
                   class="form-input"
-                  placeholder="Name complete"
+									placeholder="Name complete"
+									onblur="validate_name()"
+									onfocus="reset_validate('name', 'name-invalide')"
                   required
                 />
                 <div id="name-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
               <div class="right-row mb-2">
@@ -61,37 +65,42 @@
                   name="email"
                   id="email"
                   class="form-input"
-                  placeholder="email"
+                  placeholder="Email"
+									onblur="validate_email()"
+									onfocus="reset_validate('email', 'email-invalide')"
                   required
                 />
                 <div id="email-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
 						</div>
 						<div class="row mb-2">
               <div class="left-row mb-2">
-                <input
+								<input
+									type="password"
                   name="password"
                   id="password"
-                  class="form-input"
-                  placeholder="Password"
+									class="form-input"
+                  placeholder="Password min 8 caracters letters and numbers"
+									onblur="validate_password()"
+									onfocus="reset_validate('password', 'password-invalide')"
                   required
                 />
                 <div id="password-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
               <div class="right-row mb-2">
-                <input
-                  name="password-repeat"
-                  id="password-repeat"
+								<input
+									type="password"
+                  name="password_repeat"
+                  id="password_repeat"
                   class="form-input"
                   placeholder="Password Repeat"
+									onblur="validate_password_repeat()"
+									onfocus="validate_password_repeat('password_repeat', 'password_repeat')"
                   required
                 />
-                <div id="password-repeat-invalide" class="invalid-feedback">
-                  Please provide a valid city.
+                <div id="password_repeat-invalide" class="invalid-feedback">
                 </div>
               </div>
 						</div>
@@ -101,11 +110,12 @@
                   name="age"
                   id="age"
                   class="form-input"
-                  placeholder="Age"
+									placeholder="Age"
+									onblur="validate_age()"
+									onfocus="reset_validate('age', 'age-invalide')"
                   required
                 />
                 <div id="age-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
               <div class="right-row mb-2">
@@ -114,10 +124,11 @@
                   id="phone"
                   class="form-input"
                   placeholder="Phone"
+									onblur="validate_phone()"
+									onfocus="reset_validate('phone', 'phone-invalide')"
                   required
                 />
                 <div id="phone-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
 						</div>
@@ -127,11 +138,12 @@
                   name="address"
                   id="address"
                   class="form-input"
-                  placeholder="Address"
+									placeholder="Address"
+									onblur="validate_address()"
+									onfocus="reset_validate('address', 'address-invalide')"
                   required
                 />
                 <div id="address-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
               <div class="right-row mb-2">
@@ -140,41 +152,44 @@
                   id="city"
                   class="form-input"
                   placeholder="City"
+									onblur="validate_city()"
+									onfocus="reset_validate('city', 'city-invalide')"
                   required
                 />
                 <div id="city-invalide" class="invalid-feedback">
-                  Please provide a valid city.
                 </div>
               </div>
 						</div>
 						<div class="row mb-2">
               <div class="left-row mb-2">
                 <input
-                  name="zip-code"
-                  id="zip-code"
+                  name="zip_code"
+                  id="zip_code"
                   class="form-input"
-                  placeholder="Zip code"
+									placeholder="Zip code"
+									onblur="validate_zip_code()"
+									onfocus="reset_validate('zip_code', 'zip_code-invalide')"
                   required
                 />
-                <div id="zip-code-invalide" class="invalid-feedback">
-                  Please provide a valid city.
+                <div id="zip_code-invalide" class="invalid-feedback">
                 </div>
               </div>
               <div class="right-row mb-2">
                 <input
-                  name="id-document"
-                  id="id-document"
+                  name="id_document"
+                  id="id_document"
                   class="form-input"
-                  placeholder="ID document"
+									placeholder="ID document"
+									onblur="validate_id_document()"
+									onfocus="reset_validate('id_document', 'id_document-invalide')"
                   required
                 />
-                <div id="id-document-invalide" class="invalid-feedback">
-                  Please provide a valid city.
+                <div id="id_document-invalide" class="invalid-feedback">
                 </div>
               </div>
             </div>
             <div class="row mb-2">
-              <button type="submit" class="button button-principal">
+              <button type="submit" class="button button-principal" onclick="validate_form()">
                 Send
               </button>
             </div>
