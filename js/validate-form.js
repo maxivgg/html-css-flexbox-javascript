@@ -1,13 +1,17 @@
 const nameInvalid =
   "It must have more than 6 letters and at least one space in between.";
 const emailInvalid = "Email invalid.";
-const passwordInvalid = "At least 8 characters, consisting of letters and numbers.";
-const passwordRepeatInput = "The passwords are not the same."
+const passwordInvalid =
+  "At least 8 characters, consisting of letters and numbers.";
+const passwordRepeatInput = "The passwords are not the same.";
 const ageInvalid = "Older than 18 years-old and number integer.";
-const phoneInvalid = "Number of at least 7 digits, do not accept spaces, hyphens or parentheses.";
-const addressInvalid = "At least 5 characters, with letters, numbers and a space in between."
-const [cityInvalid, zipCodeInvalide] = "At least 3 characters."
-const IdDocumentInvalid = "7 or 8 digit number."
+const phoneInvalid =
+  "Number of at least 7 digits, do not accept spaces, hyphens or parentheses.";
+const addressInvalid =
+  "At least 5 characters, with letters, numbers and a space in between.";
+const cityInvalid = "At least 3 characters.";
+const zipCodeInvalide = "At least 3 characters.";
+const IdDocumentInvalid = "7 or 8 digit number.";
 
 const lettersRegExp = /[a-z]/i;
 const numbersRegExp = /\d/g;
@@ -68,11 +72,11 @@ function validate_email() {
 function validate_password() {
   const password = document.getElementById("password").value;
   const passwordInputInvalid = document.getElementById("password-invalide");
-	const cantLetter = password.length;
-	const contentLetters = lettersRegExp.test(password);
-	const contentNumbers = numbersRegExp.test(password);
+  const cantLetter = password.length;
+  const contentLetters = lettersRegExp.test(password);
+  const contentNumbers = numbersRegExp.test(password);
 
-	if (cantLetter < 8 || !contentLetters || !contentNumbers) {
+  if (cantLetter < 8 || !contentLetters || !contentNumbers) {
     passwordInputInvalid.innerHTML = passwordInvalid;
     passwordInputInvalid.style.display = "block";
     document.getElementById("password").classList.add("form-input-invalid");
@@ -86,12 +90,16 @@ function validate_password() {
 function validate_password_repeat() {
   const password_repeat = document.getElementById("password_repeat").value;
   const password = document.getElementById("password").value;
-  const passwordRepeatInputInvalid = document.getElementById("password_repeat-invalide");
+  const passwordRepeatInputInvalid = document.getElementById(
+    "password_repeat-invalide"
+  );
 
-	if (password_repeat !== password) {
+  if (password_repeat !== password) {
     passwordRepeatInputInvalid.innerHTML = passwordRepeatInput;
     passwordRepeatInputInvalid.style.display = "block";
-    document.getElementById("password_repeat").classList.add("form-input-invalid");
+    document
+      .getElementById("password_repeat")
+      .classList.add("form-input-invalid");
     return passwordRepeatInput;
   } else {
     reset_validate("password_repeat", "password_repeat-invalide");
@@ -99,12 +107,11 @@ function validate_password_repeat() {
   }
 }
 
-
 function validate_age() {
   const age = document.getElementById("age").value;
   const ageInputInvalid = document.getElementById("age-invalide");
 
-	if (age < 18 || !Number.isInteger(+age)) {
+  if (age < 18 || !Number.isInteger(+age)) {
     ageInputInvalid.innerHTML = ageInvalid;
     ageInputInvalid.style.display = "block";
     document.getElementById("age").classList.add("form-input-invalid");
@@ -122,11 +129,17 @@ function validate_phone() {
   const hyphens = phone.indexOf("-");
   const parenthesesOpen = phone.indexOf("(");
   const parenthesesClose = phone.indexOf(")");
-	const cantDigits = phone.length;
-	
-console.log(space, hyphens, parenthesesOpen, cantDigits)
+  const cantDigits = phone.length;
 
-	if (cantDigits < 7 || space !== -1 || hyphens !== -1 || parenthesesOpen !== -1 || parenthesesClose !== -1) {
+  console.log(space, hyphens, parenthesesOpen, cantDigits);
+
+  if (
+    cantDigits < 7 ||
+    space !== -1 ||
+    hyphens !== -1 ||
+    parenthesesOpen !== -1 ||
+    parenthesesClose !== -1
+  ) {
     phoneInputInvalid.innerHTML = phoneInvalid;
     phoneInputInvalid.style.display = "block";
     document.getElementById("phone").classList.add("form-input-invalid");
@@ -141,12 +154,11 @@ function validate_address() {
   const address = document.getElementById("address").value;
   const addressInputInvalid = document.getElementById("address-invalide");
   const space = address.indexOf(" ");
-	const cantLetter = address.length;
-	const contentLetters = lettersRegExp.test(address);
-	const contentNumbers = numbersRegExp.test(address);
+  const cantLetter = address.length;
+  const contentLetters = lettersRegExp.test(address);
+  const contentNumbers = numbersRegExp.test(address);
 
-
-	if (space === -1 || cantLetter < 5 || !contentLetters || !contentNumbers) {
+  if (space === -1 || cantLetter < 5 || !contentLetters || !contentNumbers) {
     addressInputInvalid.innerHTML = addressInvalid;
     addressInputInvalid.style.display = "block";
     document.getElementById("address").classList.add("form-input-invalid");
@@ -161,7 +173,7 @@ function validate_city() {
   const city = document.getElementById("city").value;
   const cityInputInvalid = document.getElementById("city-invalide");
 
-	if (city.length < 3) {
+  if (city.length < 3) {
     cityInputInvalid.innerHTML = cityInvalid;
     cityInputInvalid.style.display = "block";
     document.getElementById("city").classList.add("form-input-invalid");
@@ -176,7 +188,7 @@ function validate_zip_code() {
   const zip_code = document.getElementById("zip_code").value;
   const zipCodeInputInvalid = document.getElementById("zip_code-invalide");
 
-	if (zip_code.length < 3) {
+  if (zip_code.length < 3) {
     zipCodeInputInvalid.innerHTML = zipCodeInvalide;
     zipCodeInputInvalid.style.display = "block";
     document.getElementById("zip_code").classList.add("form-input-invalid");
@@ -189,10 +201,12 @@ function validate_zip_code() {
 
 function validate_id_document() {
   const id_document = document.getElementById("id_document").value;
-  const IdDocumentInputInvalid = document.getElementById("id_document-invalide");
-	const contentLetters = lettersRegExp.test(id_document);
+  const IdDocumentInputInvalid = document.getElementById(
+    "id_document-invalide"
+  );
+  const contentLetters = lettersRegExp.test(id_document);
 
-	if (id_document.length < 7 || contentLetters) {
+  if (id_document.length < 7 || contentLetters) {
     IdDocumentInputInvalid.innerHTML = IdDocumentInvalid;
     IdDocumentInputInvalid.style.display = "block";
     document.getElementById("id_document").classList.add("form-input-invalid");
@@ -203,7 +217,81 @@ function validate_id_document() {
   }
 }
 
-/*
-validate_form(){
+function validate_form() {
+  const messageFormInvalid = document.getElementById("form-invalide")
+  messageFormInvalid.innerHTML = "";
+  const messaggeName = validate_name();
+  const messaggeEmail = validate_email();
+  const messaggePassword = validate_password();
+  const messaggePasswordRepeat = validate_password_repeat();
+  const messaggeAge = validate_age();
+  const messaggePhone = validate_phone();
+  const messageAddress = validate_address();
+  const messageCity = validate_city();
+  const messageZipCode = validate_zip_code();
+  const messageIdDocument = validate_id_document();
 
-}*/
+  if (messaggeName !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Name: " + messaggeName;
+    messageFormInvalid.appendChild(addMesage);
+  
+  }
+
+  if (messaggeEmail !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Email: " + messaggeEmail;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messaggePassword !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Password: " + messaggePassword;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messaggePasswordRepeat !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Password repeat: " + messaggePasswordRepeat;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messaggeAge !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Age: " + messaggeAge;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messaggePhone !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Phone: " + messaggePhone;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messageAddress !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Address: " + messageAddress;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messageCity !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "City: " + messageCity;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messageZipCode !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Zip code: " + messageZipCode;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+  if (messageIdDocument !== true) {
+    const addMesage = document.createElement("h5");
+    addMesage.innerHTML = "Id document: " + messageIdDocument;
+    messageFormInvalid.appendChild(addMesage);
+  }
+
+
+
+}
