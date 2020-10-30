@@ -129,19 +129,10 @@ function validate_phone() {
   const phone = document.getElementById("phone").value;
   const phoneInputInvalid = document.getElementById("phone-invalide");
   const cantDigits = phone.length;
-  /*const space = phone.indexOf(" ");
-  const hyphens = phone.indexOf("-");
-  const parenthesesOpen = phone.indexOf("(");
-  const parenthesesClose = phone.indexOf(")");
-
-  console.log(space, hyphens, parenthesesOpen, cantDigits);*/
 
   if (
-    cantDigits < 7 || phone < 0
-    /*space !== -1 ||
-    hyphens !== -1 ||
-    parenthesesOpen !== -1 ||
-    parenthesesClose !== -1*/
+    cantDigits < 7 ||
+    phone < 0
   ) {
     phoneInputInvalid.innerHTML = phoneInvalid;
     phoneInputInvalid.style.display = "block";
@@ -220,8 +211,8 @@ function validate_id_document() {
 }
 
 function validate_form() {
-  //const messageFormInvalid = document.getElementById("form-invalide")
-  const messageFormInvalid = null;
+  let messageFormInvalid = "";
+  let messageFormValid = "";
   const messaggeName = validate_name();
   const messaggeEmail = validate_email();
   const messaggePassword = validate_password();
@@ -234,64 +225,78 @@ function validate_form() {
   const messageIdDocument = validate_id_document();
 
   if (messaggeName !== true) {
-    messageFormInvalid += messaggeName;
-  
+    messageFormInvalid += "Name: " + messaggeName + "\n";
+  } else {
+    messageFormValid +=
+      "Name: " + document.getElementById("name").value + "\n";
   }
 
   if (messaggeEmail !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Email: " + messaggeEmail;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Email: " + messaggeEmail + "\n";
+  } else {
+    messageFormValid +=
+      "Email: " + document.getElementById("email").value + "\n";
   }
 
   if (messaggePassword !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Password: " + messaggePassword;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Password: " + messaggePassword + "\n";
+  } else {
+    /*messageFormValid +=
+      "Password: " + document.getElementById("password").value + "\n";*/
   }
 
   if (messaggePasswordRepeat !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Password repeat: " + messaggePasswordRepeat;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Password repeat: " + messaggePasswordRepeat + "\n";
+  } else {
+   /* messageFormValid +=
+      "Password repeat: " + document.getElementById("password").value + "\n";*/
   }
 
   if (messaggeAge !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Age: " + messaggeAge;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Age: " + messaggeAge + "\n";
+  } else {
+    messageFormValid +=
+      "Age: " + document.getElementById("age").value + "\n";
   }
 
   if (messaggePhone !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Phone: " + messaggePhone;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Phone: " + messaggePhone + "\n";
+  } else {
+    messageFormValid +=
+      "Phone: " + document.getElementById("phone").value + "\n";
   }
 
   if (messageAddress !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Address: " + messageAddress;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Address: " + messageAddress + "\n";
+  } else {
+    messageFormValid +=
+      "Address: " + document.getElementById("address").value + "\n";
   }
 
   if (messageCity !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "City: " + messageCity;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "City: " + messageCity + "\n";
+  } else {
+    messageFormValid +=
+      "City: " + document.getElementById("city").value + "\n";
   }
 
   if (messageZipCode !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Zip code: " + messageZipCode;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Zip code: " + messageZipCode + "\n";
+  } else {
+    messageFormValid +=
+      "Zip code: " + document.getElementById("zip_code").value + "\n";
   }
 
   if (messageIdDocument !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Id document: " + messageIdDocument;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += "Id document: " + messageIdDocument + "\n";
+  } else {
+    messageFormValid +=
+      "Id document: " + document.getElementById("id_document").value + "\n";
   }
 
-
-
+  if (messageFormInvalid !== "") {
+    alert(messageFormInvalid);
+  } else {
+    alert(messageFormValid);
+  }
 }
