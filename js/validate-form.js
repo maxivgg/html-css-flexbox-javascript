@@ -15,6 +15,7 @@ const IdDocumentInvalid = "7 or 8 digit number.";
 
 const lettersRegExp = /[a-z]/i;
 const numbersRegExp = /\d/g;
+const simbolsRegExp = /\W/g;
 
 const nameSuscriptor = document.getElementById("name");
 nameSuscriptor.addEventListener("keyup", name_welcome);
@@ -39,8 +40,9 @@ function validate_name() {
   const space = name.indexOf(" ");
   const cantLetter = name.length;
   const cantWords = name.split(" ").length;
+  const contentNumbers = numbersRegExp.test(name);
 
-  if (space === -1 || cantLetter < 7 || cantWords < 2) {
+  if (space === -1 || cantLetter < 7 || cantWords < 2 || contentNumbers) {
     const nameInputInvalid = document.getElementById("name-invalide");
     nameInputInvalid.innerHTML = nameInvalid;
     nameInputInvalid.style.display = "block";
@@ -75,8 +77,9 @@ function validate_password() {
   const cantLetter = password.length;
   const contentLetters = lettersRegExp.test(password);
   const contentNumbers = numbersRegExp.test(password);
+  const contentSimbols = simbolsRegExp.test(password);
 
-  if (cantLetter < 8 || !contentLetters || !contentNumbers) {
+  if (cantLetter < 8 || !contentLetters || !contentNumbers || contentSimbols) {
     passwordInputInvalid.innerHTML = passwordInvalid;
     passwordInputInvalid.style.display = "block";
     document.getElementById("password").classList.add("form-input-invalid");
@@ -111,7 +114,7 @@ function validate_age() {
   const age = document.getElementById("age").value;
   const ageInputInvalid = document.getElementById("age-invalide");
 
-  if (age < 18 || !Number.isInteger(+age)) {
+  if (age < 18) {
     ageInputInvalid.innerHTML = ageInvalid;
     ageInputInvalid.style.display = "block";
     document.getElementById("age").classList.add("form-input-invalid");
@@ -125,20 +128,20 @@ function validate_age() {
 function validate_phone() {
   const phone = document.getElementById("phone").value;
   const phoneInputInvalid = document.getElementById("phone-invalide");
-  const space = phone.indexOf(" ");
+  const cantDigits = phone.length;
+  /*const space = phone.indexOf(" ");
   const hyphens = phone.indexOf("-");
   const parenthesesOpen = phone.indexOf("(");
   const parenthesesClose = phone.indexOf(")");
-  const cantDigits = phone.length;
 
-  console.log(space, hyphens, parenthesesOpen, cantDigits);
+  console.log(space, hyphens, parenthesesOpen, cantDigits);*/
 
   if (
-    cantDigits < 7 ||
-    space !== -1 ||
+    cantDigits < 7 || phone < 0
+    /*space !== -1 ||
     hyphens !== -1 ||
     parenthesesOpen !== -1 ||
-    parenthesesClose !== -1
+    parenthesesClose !== -1*/
   ) {
     phoneInputInvalid.innerHTML = phoneInvalid;
     phoneInputInvalid.style.display = "block";
@@ -204,9 +207,8 @@ function validate_id_document() {
   const IdDocumentInputInvalid = document.getElementById(
     "id_document-invalide"
   );
-  const contentLetters = lettersRegExp.test(id_document);
 
-  if (id_document.length < 7 || contentLetters) {
+  if (id_document.length < 7 || id_document < 0) {
     IdDocumentInputInvalid.innerHTML = IdDocumentInvalid;
     IdDocumentInputInvalid.style.display = "block";
     document.getElementById("id_document").classList.add("form-input-invalid");
@@ -218,8 +220,8 @@ function validate_id_document() {
 }
 
 function validate_form() {
-  const messageFormInvalid = document.getElementById("form-invalide")
-  messageFormInvalid.innerHTML = "";
+  //const messageFormInvalid = document.getElementById("form-invalide")
+  const messageFormInvalid = null;
   const messaggeName = validate_name();
   const messaggeEmail = validate_email();
   const messaggePassword = validate_password();
@@ -232,9 +234,7 @@ function validate_form() {
   const messageIdDocument = validate_id_document();
 
   if (messaggeName !== true) {
-    const addMesage = document.createElement("h5");
-    addMesage.innerHTML = "Name: " + messaggeName;
-    messageFormInvalid.appendChild(addMesage);
+    messageFormInvalid += messaggeName;
   
   }
 
