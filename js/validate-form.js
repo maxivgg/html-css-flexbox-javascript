@@ -11,11 +11,12 @@ const addressInvalid =
   "At least 5 characters, with letters, numbers and a space in between.";
 const cityInvalid = "At least 3 characters.";
 const zipCodeInvalide = "At least 3 characters.";
-const IdDocumentInvalid = "7 or 8 digit number.";
+const idDocumentInvalid = "7 or 8 digit number.";
 
 const lettersRegExp = /[a-z]/i;
 const numbersRegExp = /\d/g;
 const simbolsRegExp = /\W/g;
+const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const nameSuscriptor = document.getElementById("name");
 nameSuscriptor.addEventListener("keyup", name_welcome);
@@ -56,18 +57,19 @@ function validate_name() {
 
 function validate_email() {
   const email = document.getElementById("email").value;
-  const a = email.indexOf("@");
-  const com = email.indexOf(".com");
+  /*const a = email.indexOf("@");
+  const com = email.indexOf(".com");*/
   const emailInputInvalid = document.getElementById("email-invalide");
 
-  if (a === -1 || com === -1) {
+  if (emailRegExp.test(email)) {
+    reset_validate("email", "email-invalide");
+    return true;
+  } else {
     emailInputInvalid.innerHTML = emailInvalid;
     emailInputInvalid.style.display = "block";
     document.getElementById("email").classList.add("form-input-invalid");
     return emailInvalid;
-  } else {
-    reset_validate("email", "email-invalide");
-    return true;
+
   }
 }
 
@@ -194,16 +196,16 @@ function validate_zip_code() {
 }
 
 function validate_id_document() {
-  const id_document = document.getElementById("id_document").value;
-  const IdDocumentInputInvalid = document.getElementById(
+  const idDocument = document.getElementById("id_document").value;
+  const idDocumentInputInvalid = document.getElementById(
     "id_document-invalide"
   );
 
-  if (id_document.length < 7 || id_document < 0) {
-    IdDocumentInputInvalid.innerHTML = IdDocumentInvalid;
-    IdDocumentInputInvalid.style.display = "block";
+  if (idDocument.length < 7 || idDocument < 0) {
+    idDocumentInputInvalid.innerHTML = idDocumentInvalid;
+    idDocumentInputInvalid.style.display = "block";
     document.getElementById("id_document").classList.add("form-input-invalid");
-    return IdDocumentInvalid;
+    return idDocumentInvalid;
   } else {
     reset_validate("id_document", "id_document-invalide");
     return true;
