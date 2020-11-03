@@ -153,8 +153,10 @@ function validate_address() {
   const cantLetter = address.length;
   const contentLetters = lettersRegExp.test(address);
   const contentNumbers = numbersRegExp.test(address);
+  const firstWord = address.substring(0, space);
+  const secondWord = address.substring(space+1);
 
-  if (space === -1 || cantLetter < 5 || !contentLetters || !contentNumbers) {
+  if (space === -1 || cantLetter < 5 || !contentLetters || !contentNumbers || firstWord.length === 0 || secondWord.length === 0) {
     addressInputInvalid.innerHTML = addressInvalid;
     addressInputInvalid.style.display = "block";
     document.getElementById("address").classList.add("form-input-invalid");
